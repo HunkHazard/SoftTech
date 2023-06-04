@@ -28,12 +28,12 @@ export default function Home() {
               marginTop: "1vh",
             }}
           >
-            <Typography variant="h4" color="initial">
-              Field 1
+            <Typography variant="h5" color="initial">
+              Field 1 Chart
             </Typography>
             <GraphArea />
-            <Typography variant="h6" color="initial">
-              Power Consumption
+            <Typography variant="h6" color="initial" style={{textAlign:"center"}} >
+              IoT based energy meter reading
             </Typography>
           </div>
           <div
@@ -45,14 +45,15 @@ export default function Home() {
               marginTop: "1vh",
             }}
           >
-            <Typography variant="h4" color="initial">
-              Field 2
+            <Typography variant="h5" color="initial">
+              Field 2 Chart
             </Typography>
             <GraphArea />
-            <Typography variant="h6" color="initial">
-              Power Consumption
+            <Typography variant="h6" color="initial" style={{textAlign:"center"}}  >
+            IoT based energy meter reading
             </Typography>
           </div>
+          
         </div>
       </div>
     </>
