@@ -16,6 +16,15 @@
   }
 }
 
+@font-face {
+  font-family: "Rubik";
+  src: url('../fonts/DSEG7Classic-LightItalic.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
