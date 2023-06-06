@@ -1,26 +1,26 @@
 .testFont {
-    font-family: 'Rubik' , sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-    height: fit-content;
-  }
-  
-  .testFont1 {
-    font-family: 'Rubik' , sans-serif;
-    font-size: 1.5rem;
-  }
-  
-  .testFont2 {
-    font-size: .65rem;
-  }
-  
-  .testFont3 {
-    font-size: .5rem;
-    margin-right: 1.75rem;
-  }
-  
-  .arrow{
-    height: 3rem;
-    width: 6rem;
-    margin-top: 1.5rem;
-  }
+  font-family: 'Rubik' , sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  height: fit-content;
+}
+
+.testFont1 {
+  font-family: 'Rubik' , sans-serif;
+  font-size: 1.5rem;
+}
+
+.testFont2 {
+  font-size: .65rem;
+}
+
+.testFont3 {
+  font-size: .5rem;
+  margin-right: 1.75rem;
+}
+
+.arrow{
+  height: 3rem;
+  width: 6rem;
+  margin-top: 1.5rem;
+}
