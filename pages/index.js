@@ -4,16 +4,36 @@ import SideBar from "./Sidebar";
 import Appbar from "./Appbar";
 import GraphArea from "./Grapharea";
 import { Container, Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const [Homedata, setData] = useState({});
+
+  // update the data from child component (based on the station selected)
+  const handleData = (data) => {
+    setData(data);
+
+    // console.log(data);
+  }
+
+  // useEffect used to make sure that the data sent to the Bulletin component is updated
+  // whenever the data from the Sidebar component is updated
+  
+  useEffect(() => {
+    
+    console.log("data", Homedata);
+
+  }, [Homedata],[]);
+  
+
   return (
     <>
       <Appbar />
       <Navbar />
       <Stack direction={"row"}>
-        <SideBar></SideBar>
+        <SideBar sendDataToParent={handleData} />
         <Stack direction={"column"} sx={{ width: "1" }}>
-          <Bulletin />
+          <Bulletin data={Homedata} />
           <Stack direction={"row"} sx={{ width: "1" }}>
             <Container
               className="graphArea"

@@ -3,7 +3,7 @@ import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
 
-export default function GraphArea() {
+export default function GraphArea({Xpoints, Ypoints}) {
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function GraphArea() {
         datasets: [
           {
             label: "Dataset 1",
-            data: [10, 20, 30], // Provide the data points for the Y-axis
+            // data: [10, 20, 30], // Provide the data points for the Y-axis
             borderColor: "rgba(0, 123, 255, 0.5)", // Set the line color
             fill: false, // Disable filling the area below the line
           },

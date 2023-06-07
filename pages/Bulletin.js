@@ -1,6 +1,17 @@
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import styles from "../styles/Home.module.css";
-export default function Bulletin() {
+import { useEffect, useState } from "react";
+
+export default function Bulletin({ data }) {
+  const [Data, setData] = useState({});
+
+  useEffect(() => {
+    setData(data);
+    console.log("Child ", Data);
+
+  }, [Data]);
+
+
   return (
     <Container>
       <Stack direction={"row"} sx={{ mb: 4 }}>
@@ -17,7 +28,7 @@ export default function Bulletin() {
             <Box height={"fit-content"}>
               <Typography>RATE 1</Typography>
             </Box>
-            <p className={styles.testFont}>1234</p>
+            <p className={styles.testFont}></p>
           </Box>
           <Container sx={{ display: "flex", flexDirection: "column" }}>
             <Divider sx={{ mb: 2, bgcolor: "black" }}></Divider>
