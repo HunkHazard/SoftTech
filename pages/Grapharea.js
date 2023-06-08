@@ -1,35 +1,52 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
 
-export default function GraphArea() {
+export default function GraphArea({ data }) {
   const chartRef = useRef(null);
+  const [Data, setData] = useState(data); // Set initial state of Data to the data prop
 
   useEffect(() => {
-    const ctx = chartRef.current.getContext("2d");
-    const chart = new Chart(ctx, {
-      type: "line", // Specify the chart type as 'line'
-      data: {
-        labels: ["Label 1", "Label 2", "Label 3"], // Provide the labels for the X-axis
-        datasets: [
-          {
-            label: "Dataset 1",
-            data: [10, 20, 30], // Provide the data points for the Y-axis
-            borderColor: "rgba(0, 123, 255, 0.5)", // Set the line color
-            fill: false, // Disable filling the area below the line
-          },
-        ],
-      },
-      options: {
-        // Specify any additional options for your line chart
-      },
-    });
+    setData(data);
+  }, [data]);
+
+  useEffect(() => {
+    let chart; // Declare the chart variable outside the if-else block
+
+    if (
+      Data === null ||
+      typeof Data === "undefined" ||
+      Object.keys(Data).length === 0
+    ) {
+      return; // Return early if Data is null, undefined, or empty
+    } else {
+      const ctx = chartRef.current.getContext("2d");
+      chart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: Data.x,
+          datasets: [
+            {
+              label: "Dataset 1",
+              data: Data.y,
+              borderColor: "rgba(0, 123, 255, 0.5)",
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          // Specify any additional options for your line chart
+        },
+      });
+    }
 
     return () => {
-      chart.destroy(); // Cleanup the chart instance when the component is unmounted
+      if (chart) {
+        chart.destroy(); // Cleanup the chart instance when the component is unmounted
+      }
     };
-  }, []);
+  }, [Data, chartRef]);
 
   return <canvas ref={chartRef} />;
 }
