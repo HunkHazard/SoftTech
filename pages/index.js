@@ -13,7 +13,7 @@ function Home() {
   const handleData = (data) => {
     setData(data);
 
-    // console.log(data);
+    console.log(data);
   }
 
   // useEffect used to make sure that the data sent to the Bulletin component is updated
@@ -55,7 +55,7 @@ function Home() {
                 <Typography variant="h5" color="initial">
                   Field 1 Chart
                 </Typography>
-                <GraphArea />
+                <GraphArea data={Homedata.field_one} />
                 <Typography
                   variant="h6"
                   color="initial"
@@ -76,7 +76,7 @@ function Home() {
                 <Typography variant="h5" color="initial">
                   Field 2 Chart
                 </Typography>
-                <GraphArea />
+                <GraphArea data={Homedata.field_two} />
                 <Typography
                   variant="h6"
                   color="initial"

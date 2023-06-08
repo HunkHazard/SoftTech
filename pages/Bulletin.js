@@ -3,13 +3,13 @@ import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 
 export default function Bulletin({ data }) {
-  const [Data, setData] = useState({});
+  const [Data, setData] = useState(null);
 
   useEffect(() => {
     setData(data);
-    console.log("Child ", Data);
+    // console.log("Child ", Data);
 
-  }, [Data]);
+  },[data]);
 
 
   return (
@@ -28,7 +28,7 @@ export default function Bulletin({ data }) {
             <Box height={"fit-content"}>
               <Typography>RATE 1</Typography>
             </Box>
-            <p className={styles.testFont}></p>
+            <p className={styles.testFont}>{(Data===null || Object.keys(Data).length === 0)?null:Data.current_reading.rate_one}</p>
           </Box>
           <Container sx={{ display: "flex", flexDirection: "column" }}>
             <Divider sx={{ mb: 2, bgcolor: "black" }}></Divider>
@@ -38,7 +38,7 @@ export default function Bulletin({ data }) {
             <Box height={"fit-content"}>
               <Typography>RATE 2</Typography>
             </Box>
-            <p className={styles.testFont}>1234</p>
+            <p className={styles.testFont}>{(Data===null || Object.keys(Data).length === 0)?null:Data.current_reading.rate_two}</p>
           </Box>
         </Stack>
         <Stack
@@ -75,7 +75,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.low).toString().split('')[0]}
               </Box>
               <Box
                 sx={{
@@ -86,7 +86,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.low).toString().split('')[1]}
               </Box>
               <Box
                 sx={{
@@ -97,7 +97,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.low).toString().split('')[2]}
               </Box>
               <Box
                 sx={{
@@ -108,7 +108,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.low).toString().split('')[3]}
               </Box>
               <Box
                 sx={{
@@ -119,7 +119,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.low).toString().split('')[4]}
               </Box>
               <Box
                 sx={{
@@ -130,7 +130,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.low).toString().split('')[5]}
               </Box>
               <Box
                 sx={{
@@ -186,7 +186,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.normal).toString().split('')[0]}
               </Box>
               <Box
                 sx={{
@@ -197,7 +197,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.normal).toString().split('')[1]}
               </Box>
               <Box
                 sx={{
@@ -208,7 +208,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.normal).toString().split('')[2]}
               </Box>
               <Box
                 sx={{
@@ -219,7 +219,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.normal).toString().split('')[3]}
               </Box>
               <Box
                 sx={{
@@ -230,7 +230,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.normal).toString().split('')[4]}
               </Box>
               <Box
                 sx={{
@@ -241,7 +241,7 @@ export default function Bulletin({ data }) {
                   fontWeight: "bold",
                 }}
               >
-                4
+                {(Data===null || Object.keys(Data).length === 0)?null:(Data.energy_consumption.normal).toString().split('')[5]}
               </Box>
               <Box
                 sx={{
