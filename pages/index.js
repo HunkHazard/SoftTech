@@ -7,24 +7,21 @@ import { Container, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 function Home() {
-  const [Homedata, setData] = useState({});
+  const [selected, setSelected] = useState(0);
 
   // update the data from child component (based on the station selected)
   const handleData = (data) => {
-    setData(data);
+    setSelected(data);
 
     console.log(data);
-  }
+  };
 
   // useEffect used to make sure that the data sent to the Bulletin component is updated
   // whenever the data from the Sidebar component is updated
-  
-  useEffect(() => {
-    
-    console.log("data", Homedata);
 
-  }, [Homedata],[]);
-  
+  useEffect(() => {
+    console.log("data", selected);
+  }, [selected]);
 
   return (
     <>
@@ -33,7 +30,7 @@ function Home() {
       <Stack direction={"row"}>
         <SideBar sendDataToParent={handleData} />
         <Stack direction={"column"} sx={{ width: "1" }}>
-          <Bulletin data={Homedata} />
+          <Bulletin data={selected} />
           <Stack direction={"row"} sx={{ width: "1" }}>
             <Container
               className="graphArea"
@@ -55,7 +52,7 @@ function Home() {
                 <Typography variant="h5" color="initial">
                   Field 1 Chart
                 </Typography>
-                <GraphArea data={Homedata.field_one} />
+                <GraphArea data={selected} i={1} />
                 <Typography
                   variant="h6"
                   color="initial"
@@ -76,7 +73,7 @@ function Home() {
                 <Typography variant="h5" color="initial">
                   Field 2 Chart
                 </Typography>
-                <GraphArea data={Homedata.field_two} />
+                <GraphArea data={selected} i={2} />
                 <Typography
                   variant="h6"
                   color="initial"
