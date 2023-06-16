@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FormControl, IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { stationData } from "./stationData"; // Import the stationData array
 
 function DropdownMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -29,10 +30,11 @@ function DropdownMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Station 1</MenuItem>
-        <MenuItem onClick={handleClose}>Station 2</MenuItem>
-        <MenuItem onClick={handleClose}>Station 3</MenuItem>
-        <MenuItem onClick={handleClose}>Station 4</MenuItem>
+        {stationData.map((station) => (
+          <MenuItem key={station.name} onClick={handleClose}>
+            {station.name}
+          </MenuItem>
+        ))}
       </Menu>
     </div>
   );
