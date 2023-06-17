@@ -8,30 +8,66 @@ import {
 } from "@mui/material";
 import styles from "../styles/Home.module.css";
 
+const chartContainerStyle = {
+  bgcolor: "#eeeeee",
+  mt: 2,
+  pt: 1,
+  pl: 2,
+  pr: 2,
+};
+
+const chartBoxStyle = {
+  display: "flex",
+  flexDirection: "row",
+};
+
+const chartDividerStyle = {
+  mb: 2,
+  bgcolor: "black",
+};
+
+const energyContainerStyle = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+const energyGradientBoxStyle = {
+  display: "flex",
+  flexDirection: "row",
+  background: "linear-gradient(to right, grey 75%, red 50%)",
+  borderRadius: "5px",
+  p: 1,
+  justifyContent: "space-between",
+};
+
+const energyValueBoxStyle = {
+  bgcolor: "black",
+  color: "white",
+  p: 0.5,
+  fontSize: "22px",
+  fontWeight: "bold",
+};
+
 export default function Chart() {
   return (
     <Container>
       <Stack direction={"row"}>
         <Stack
           direction={"column"}
-          sx={{ bgcolor: "#eeeeee", mt: 2, pt: 1, pl: 2, pr: 2 }}
-          width={"35%"}
-          height={"fit-content"}
-          spacing={-3}
-          mr={8}
+          sx={{ ...chartContainerStyle, width: "35%", height: "fit-content", spacing: -3, mr: 8 }}
         >
           <Typography sx={{ mb: 3 }}>Air Quality</Typography>
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Box sx={chartBoxStyle}>
             <Box height={"fit-content"}>
               <Typography>Current AQI</Typography>
             </Box>
             <CircularProgress value={60} />
           </Box>
-          <Container sx={{ display: "flex", flexDirection: "column" }}>
-            <Divider sx={{ mb: 2, bgcolor: "black" }}></Divider>
-            <Divider sx={{ mb: 4, bgcolor: "black" }}></Divider>
+          <Container sx={energyContainerStyle}>
+            <Divider sx={chartDividerStyle} />
+            <Divider sx={chartDividerStyle} />
           </Container>
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Box sx={chartBoxStyle}>
             <Box height={"fit-content"}>
               <Typography>RATE 2</Typography>
             </Box>
@@ -40,97 +76,21 @@ export default function Chart() {
         </Stack>
         <Stack
           direction={"column"}
-          sx={{ bgcolor: "#eeeeee", mt: 2, pt: 2, pl: 2, pr: 2, mr: 8 }}
-          width={"35%"}
-          spacing={-2}
+          sx={{ ...chartContainerStyle, width: "35%", spacing: -2, mr: 8 }}
         >
           <Typography sx={{ mb: 2 }}>Energy Consumption</Typography>
-          <Container
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
+          <Container sx={energyContainerStyle}>
             <Typography sx={{ fontSize: "10px", pt: 1, pb: 1 }}>LOW</Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                background: "linear-gradient(to right, grey 75%, red 50%)",
-                borderRadius: "5px",
-                p: 1,
-                justifyContent: "space-between",
-              }}
-              width={"100%"}
-            >
+            <Box sx={energyGradientBoxStyle} width={"100%"}>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
               <Box
                 sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
+                  ...energyValueBoxStyle,
                   bgcolor: "white",
                   color: "black",
                   p: 0.5,
@@ -146,16 +106,7 @@ export default function Chart() {
                 -
               </Box>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                ml: 1,
-                pt: 1,
-                pb: 2,
-              }}
-              width={"80%"}
-            >
+            <Box sx={{ ...chartBoxStyle, ml: 1, pt: 1, pb: 2 }} width={"80%"}>
               <Typography sx={{ mr: 3, fontSize: "10px" }}>10,000</Typography>
               <Typography sx={{ mr: 4, fontSize: "10px" }}>1,000</Typography>
               <Typography sx={{ mr: 5, fontSize: "10px" }}>100</Typography>
@@ -163,85 +114,16 @@ export default function Chart() {
               <Typography sx={{ mr: 7, fontSize: "10px" }}>1</Typography>
               <Typography sx={{ fontSize: "10px" }}>0.1</Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                background: "linear-gradient(to right, grey 75%, red 50%)",
-                borderRadius: "5px",
-                p: 1,
-                justifyContent: "space-between",
-              }}
-              width={"100%"}
-            >
+            <Box sx={energyGradientBoxStyle} width={"100%"}>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
+              <Box sx={energyValueBoxStyle}>4</Box>
               <Box
                 sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
-                  bgcolor: "black",
-                  color: "white",
-                  p: 0.5,
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                4
-              </Box>
-              <Box
-                sx={{
+                  ...energyValueBoxStyle,
                   bgcolor: "white",
                   color: "black",
                   p: 0.5,
