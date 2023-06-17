@@ -78,19 +78,19 @@ export const stationData = [
     {
     name: "Station 5",
     current_reading: {
-      rate_one: 1111,
-      rate_two: 2222,
+      rate_one: 4722,
+      rate_two: 2927  ,
     },
     energy_consumption: {
-      low: 333333,
-      normal: 444444,
+      low: 748392,
+      normal: 983622,
     },
     field_one: {
       x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       y: [5, 4, 3, 2, 1, 1, 2, 3, 4, 5],
     },
     field_two: {
-      x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      x: [1, 2, 3, 4, 7, 6, 7, 8, 9, 10],
       y: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
     },
   },

@@ -7,7 +7,6 @@ export default function Bulletin({ data }) {
 
   useEffect(() => {
     setData(data);
-    // console.log("Child ", Data);
   }, [data]);
 
   return (
