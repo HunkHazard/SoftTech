@@ -52,10 +52,10 @@ export default function Navbar() {
       </Stack>
       <Button
         sx={{
-          bgcolor: "#00b0ff",
+          bgcolor: "#00bcd4",
           p: { sm: 2, xs: 1 },
           "&:hover": {
-            backgroundColor: "#00b0ff",
+            backgroundColor: "#00bcd4",
           },
         }}
       >

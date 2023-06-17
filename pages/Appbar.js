@@ -10,6 +10,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Search, SearchIconWrapper, StyledInputBase } from "./styles";
+import { Button } from "@mui/material";
 
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -91,6 +92,19 @@ export default function PrimarySearchAppBar() {
             EmbedAIOT
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              borderRadius: "20px",
+              backgroundColor: "#00bcd4",
+              fontWeight: "bold",
+              color: "#fff",
+              textTransform: 'none',
+            }}
+          >
+            Add Devices
+          </Button>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Search style={{ backgroundColor: "#bdbdbd", color: "#424242" }}>
               <SearchIconWrapper>
