@@ -48,7 +48,7 @@ function Home() {
           <SideBar sendDataToParent={handleData} />
         </Box>
         <Box sx={{ display: { xs: "block", lg: "none" } }}>
-          <Dropdown />
+          <Dropdown sendSelectedToParent={handleData} />
         </Box>
         
         { component == 0 ?  

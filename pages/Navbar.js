@@ -58,27 +58,37 @@ export default function Navbar({sendCompToParent}) {
         }}
         spacing={2.5}
       >
-        <Link underline="none" sx={{ cursor: "pointer" }}>
+        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
+          sendCompToParent(0);
+        }}>
           <Typography sx={{ color: "#424242", fontSize: "14px" }}>
             Bulletin
           </Typography>
         </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }}>
+        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
+          sendCompToParent(1);
+        }}>
           <Typography sx={{ color: "#424242", fontSize: "14px" }}>
             Chart
           </Typography>
         </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }}>
+        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
+          sendCompToParent(2);
+        }}>
           <Typography sx={{ color: "#424242", fontSize: "14px" }}>
             Map
           </Typography>
         </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }}>
+        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
+          sendCompToParent(3);
+        }}>
           <Typography sx={{ color: "#424242", fontSize: "14px" }}>
             Data
           </Typography>
         </Link>
-        <Link underline="none" sx={{ cursor: "pointer", fontSize: "14px" }}>
+        <Link underline="none" sx={{ cursor: "pointer", fontSize: "14px" }} onClick={()=>{
+          sendCompToParent(4);
+        }}>
           <Typography sx={{ color: "#424242", fontSize: "14px" }}>
             Mobilize
           </Typography>

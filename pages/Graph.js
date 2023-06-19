@@ -140,7 +140,7 @@ export default function Graph({selected}) {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4 },
+              mr: { md: 8, sm: 4, xs:2 },
               borderRadius: "16px",
               p: 2,
             }}
@@ -173,7 +173,7 @@ export default function Graph({selected}) {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4 },
+              mr: { md: 8, sm: 4, xs:2 },
               borderRadius: "16px",
               p: 2,
             }}
@@ -216,7 +216,7 @@ export default function Graph({selected}) {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4 },
+              mr: { md: 8, sm: 4, xs:2 },
               borderRadius: "16px",
               p: 2,
             }}
@@ -257,7 +257,7 @@ export default function Graph({selected}) {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4 },
+              mr: { md: 8, sm: 4, xs:2 },
               borderRadius: "16px",
               p: 2,
             }}
