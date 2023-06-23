@@ -7,18 +7,14 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import { useState, useEffect } from "react";
 
-export default function SideBar({ sendDataToParent }) {
-  const [selected, setSelected] = useState(0);
+import { useSelector, useDispatch } from "react-redux";
+import { changeSelectedStation } from "./store/slices/selectedStationSlice";
 
-  useEffect(() => {
-    sendStationData(selected);
-  }, [selected]);
-
-  const sendStationData = (station) => {
-    sendDataToParent(station);
-  };
+export default function SideBar() {
+  const stations = ["Station 1", "Station 2", "Station 3", "Station 4"];
+  const dispatch = useDispatch();
+  const selected = useSelector((state) => state.selectedStation.value);
 
   return (
     <div
@@ -29,35 +25,29 @@ export default function SideBar({ sendDataToParent }) {
 
       <Box sx={{ overflow: "auto" }}>
         <List>
-          {["Station 1", "Station 2", "Station 3", "Station 4"].map(
-            (text, index) => (
-              <ListItem
-                key={text}
-                style={{
-                  boxSizing: "border-box",
-                  padding: "0px",
+          {stations.map((text, index) => (
+            <ListItem
+              key={text}
+              style={{
+                boxSizing: "border-box",
+                padding: "0px",
 
-                  marginTop: "20px",
+                marginTop: "20px",
 
-                  borderBottom:
-                    selected === index ? "5px solid Yellow" : "none",
-                }}
-                onClick={() => {
-                  // sendStationData(index);
-                  setSelected((prev) => {
-                    return index;
-                  });
-                }}
-              >
-                <ListItemButton style={{ backgroundColor: "#e0e0e0" }}>
-                  <ListItemIcon>
-                    <NavigationIcon style={{ transform: "rotate(90deg)" }} />
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            )
-          )}
+                borderBottom: selected === index ? "5px solid Yellow" : "none",
+              }}
+              onClick={() => {
+                dispatch(changeSelectedStation(index));
+              }}
+            >
+              <ListItemButton style={{ backgroundColor: "#e0e0e0" }}>
+                <ListItemIcon>
+                  <NavigationIcon style={{ transform: "rotate(90deg)" }} />
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
       </Box>
     </div>

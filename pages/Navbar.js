@@ -1,5 +1,12 @@
 import { Box, Button, Link, Stack, Typography } from "@mui/material";
-export default function Navbar({sendCompToParent}) {
+import { useDispatch } from "react-redux";
+import { changeSelectedComponent } from "./store/slices/selectedComponentSlice";
+
+const components = ["Bulletin", "Chart", "Map", "Data", "Mobilize"];
+
+export default function Navbar() {
+  const dispatch = useDispatch();
+
   return (
     <Stack
       justifyContent={"space-between"}
@@ -24,31 +31,18 @@ export default function Navbar({sendCompToParent}) {
         sx={{ bgcolor: "#bdbdbd", display: { md: "flex", xs: "none" } }}
         spacing={10}
       >
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(0);
-        }}>
-          <Typography sx={{ color: "#424242" }}>Bulletin</Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(1);
-        }}>
-          <Typography sx={{ color: "#424242" }}>Chart</Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(2);
-        }}>
-          <Typography sx={{ color: "#424242" }}>Map</Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(3);
-        }}>
-          <Typography sx={{ color: "#424242" }}>Data</Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(4);
-        }}>
-          <Typography sx={{ color: "#424242" }}>Mobilize</Typography>
-        </Link>
+        {components.map((component, index) => (
+          <Link
+            key={index}
+            underline="none"
+            sx={{ cursor: "pointer" }}
+            onClick={() => {
+              dispatch(changeSelectedComponent(index));
+            }}
+          >
+            <Typography sx={{ color: "#424242" }}>{component}</Typography>
+          </Link>
+        ))}
       </Stack>
       <Stack
         direction={"row"}
@@ -58,41 +52,20 @@ export default function Navbar({sendCompToParent}) {
         }}
         spacing={2.5}
       >
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(0);
-        }}>
-          <Typography sx={{ color: "#424242", fontSize: "14px" }}>
-            Bulletin
-          </Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(1);
-        }}>
-          <Typography sx={{ color: "#424242", fontSize: "14px" }}>
-            Chart
-          </Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(2);
-        }}>
-          <Typography sx={{ color: "#424242", fontSize: "14px" }}>
-            Map
-          </Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer" }} onClick={()=>{
-          sendCompToParent(3);
-        }}>
-          <Typography sx={{ color: "#424242", fontSize: "14px" }}>
-            Data
-          </Typography>
-        </Link>
-        <Link underline="none" sx={{ cursor: "pointer", fontSize: "14px" }} onClick={()=>{
-          sendCompToParent(4);
-        }}>
-          <Typography sx={{ color: "#424242", fontSize: "14px" }}>
-            Mobilize
-          </Typography>
-        </Link>
+        {components.map((component, index) => (
+          <Link
+            key={component}
+            underline="none"
+            sx={{ cursor: "pointer" }}
+            onClick={() => {
+              dispatch(changeSelectedComponent(index));
+            }}
+          >
+            <Typography sx={{ color: "#424242", fontSize: "14px" }}>
+              {component}
+            </Typography>
+          </Link>
+        ))}
       </Stack>
       <Button
         sx={{

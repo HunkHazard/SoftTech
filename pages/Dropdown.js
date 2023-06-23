@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { FormControl, IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useDispatch } from "react-redux";
+import { changeSelectedStation } from "./store/slices/selectedStationSlice";
 
-function DropdownMenu({sendSelectedToParent}) {
+const options = ["Station 1", "Station 2", "Station 3", "Station 4"];
+
+function DropdownMenu() {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -29,22 +34,19 @@ function DropdownMenu({sendSelectedToParent}) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={()=>{
-          sendSelectedToParent(0);
-          handleClose();
-        }}>Station 1</MenuItem>
-        <MenuItem onClick={()=>{
-          sendSelectedToParent(1);
-          handleClose();
-        }}>Station 2</MenuItem>
-        <MenuItem  onClick={()=>{
-          sendSelectedToParent(2);
-          handleClose();
-        }}>Station 3</MenuItem>
-        <MenuItem  onClick={()=>{
-          sendSelectedToParent(3);
-          handleClose();
-        }}>Station 4</MenuItem>
+        {options.map((option, index) => {
+          return (
+            <MenuItem
+              key={index}
+              onClick={() => {
+                dispatch(changeSelectedStation(index));
+                handleClose();
+              }}
+            >
+              {option}
+            </MenuItem>
+          );
+        })}
       </Menu>
     </div>
   );

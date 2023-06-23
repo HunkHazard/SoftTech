@@ -9,6 +9,7 @@ import {
 import styles from "../styles/Home.module.css";
 import Chart from "chart.js/auto";
 import React, { useRef, useEffect , useState} from "react";
+import { useSelector } from "react-redux";
 
 const StationOne = {
   x : [0, 1, 2, 3, 4],
@@ -34,30 +35,18 @@ y : [2, 4, 6, 8, 10],
 airQuality : [15, 35, 55]
 };
 
-export default function Graph({selected}) {
+const stations = [StationOne, StationTwo, StationThree, StationFour];
+
+export default function Graph() {
   const tempChartRef = useRef(null);
   const aqiChartRef = useRef(null);
 
-  const [selectedStat, setSelectedStat] = useState(selected);
-  const [StationData, setStationData] = useState(StationOne);
+  const selected = useSelector((state) => state.selectedStation.value);
+  const [StationData, setStationData] = useState(stations[selected]);
 
   useEffect(()=>{
-    setSelectedStat(selected);
-    console.log(`Selected STAT : ${selected}` )
+    setStationData(stations[selected]);
   },[selected])
-
-  useEffect(()=>{
-     if (selectedStat === 0) {
-      setStationData(StationOne);
-    } else if (selectedStat === 1) {
-      setStationData(StationTwo);
-    } else if (selectedStat === 2) {
-      setStationData(StationThree);
-    } else if (selectedStat === 3) {
-      setStationData(StationFour);
-    }
-    
-  },[selectedStat])
 
   useEffect(() => {
     const ctx = document.getElementById("barChart").getContext("2d");

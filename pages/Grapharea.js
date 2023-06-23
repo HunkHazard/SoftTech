@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
+import { useSelector } from "react-redux";
 
 const stationOne = {
   current_reading: {
@@ -77,46 +78,22 @@ const stationFour = {
   },
 };
 
-export default function GraphArea({ data, i }) {
+const stations = [stationOne, stationTwo, stationThree, stationFour];
+
+export default function GraphArea({ i }) {
+  const selected = useSelector((state) => state.selectedStation.value);
+
   const chartRef = useRef(null);
-  const [selected, setSelected] = useState(data);
-  const [Data, setData] = useState(stationOne);
-  const [labels, setLabels] = useState(stationOne.field_one.x);
-  const [values, setValues] = useState(stationOne.field_one.y);
 
-  const setLabelsAndValues = () => {
-    if (i === 1) {
-      setLabels(Data.field_one.x);
-      setValues(Data.field_one.y);
-    } else {
-      setLabels(Data.field_two.x);
-      setValues(Data.field_two.y);
-    }
-  };
-
-  const setStation = () => {
-    if (selected === 0) {
-      setData(stationOne);
-    } else if (selected === 1) {
-      setData(stationTwo);
-    } else if (selected === 2) {
-      setData(stationThree);
-    } else if (selected === 3) {
-      setData(stationFour);
-    }
-  };
+  const [Data, setData] = useState(stations[selected]);
+  const [labels, setLabels] = useState(stations[selected].field_one.x);
+  const [values, setValues] = useState(stations[selected].field_one.y);
 
   useEffect(() => {
-    setSelected(data);
-  }, [data]);
-
-  useEffect(() => {
-    setStation();
+    setData(stations[selected]);
+    setLabels(stations[selected].field_one.x);
+    setValues(stations[selected].field_one.y);
   }, [selected]);
-
-  useEffect(() => {
-    setLabelsAndValues();
-  }, [Data, i]);
 
   useEffect(() => {
     let chart;

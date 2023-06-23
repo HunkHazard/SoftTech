@@ -1,6 +1,7 @@
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const stationOne = {
   current_reading: {
@@ -78,33 +79,17 @@ const stationFour = {
   },
 };
 
+const stations = [stationOne, stationTwo, stationThree, stationFour];
 
+export default function Bulletin() {
+  const selected = useSelector((state) => state.selectedStation.value);
 
-export default function Bulletin({ data }) {
-  const [selected, setSelected] = useState(0);
-  const [Data, setData] = useState(stationOne);
-
-  const setStation = () => {
-    if (selected === 0) {
-      setData(stationOne);
-    } else if (selected === 1) {
-      setData(stationTwo);
-    } else if (selected === 2) {
-      setData(stationThree);
-    } else if (selected === 3) {
-      setData(stationFour);
-    }
-  };
+  const [Data, setData] = useState(stations[selected]);
 
   useEffect(() => {
-    setSelected(data);
-    
-  }, [data]);
-
-  useEffect(() => {
-    setStation();
+    setData(stations[selected]);
   }, [selected]);
-  
+
   return (
     <Container>
       <Stack
