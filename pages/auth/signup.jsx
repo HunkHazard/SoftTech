@@ -3,7 +3,7 @@ import { Stack, Box } from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-function signup() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setName] = useState("");
@@ -214,4 +214,4 @@ function signup() {
   );
 }
 
-export default signup;
+export default Signup;

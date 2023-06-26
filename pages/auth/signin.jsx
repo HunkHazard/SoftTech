@@ -21,7 +21,7 @@ const providers = [
   },
 ];
 
-const signin = () => {
+const Signin = () => {
   const { data: session, status } = useSession();
   const { push,asPath } = useRouter();
   const [email, setEmail] = useState("");
@@ -81,7 +81,7 @@ const signin = () => {
       }}
     >
       <Stack>
-        <form onSubmit={handleSubmit}> //hello
+        <form onSubmit={handleSubmit}>
           <input
             type="email"
             placeholder="EMAIL ADDRESS"
@@ -160,4 +160,4 @@ const signin = () => {
   );
 };
 
-export default signin;
+export default Signin;
