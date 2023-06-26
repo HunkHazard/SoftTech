@@ -1,9 +1,10 @@
 import React from "react";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box ,Typography,Button} from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
+import {signIn} from "next-auth/react";
 const providers = [
   {
     name: "github",
