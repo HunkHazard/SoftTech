@@ -37,6 +37,15 @@ export default async function handler(req, res) {
       console.error('Error creating user:', error);
       res.status(500).json({ error: 'Failed to create user' });
     }
+  } else if (req.method === 'GET') {
+    try {
+      const users = await prisma.user.findMany();
+
+      res.status(200).json(users);
+    } catch (error) {
+      console.error('Error retrieving user information:', error);
+      res.status(500).json({ error: 'Failed to retrieve user information' });
+    }
   } else {
     res.status(405).json({ error: `Method ${req.method} not allowed` });
   }
