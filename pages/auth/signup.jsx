@@ -2,6 +2,19 @@ import React from "react";
 import { Stack, Box } from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import GoogleIcon from "@mui/icons-material/Google";
+const providers = [
+  {
+    name: "github",
+    Icon: GitHubIcon,
+  },
+  {
+    name: "google",
+    Icon: GoogleIcon,
+  },
+];
+
 
 function signup() {
   const [email, setEmail] = useState("");
@@ -17,7 +30,8 @@ function signup() {
     e.preventDefault();
     router.push(`../../?session=true&email=${email}`);
   };
-
+  
+  const handleOAuthSignIn = (provider) => () => signIn(provider); //will not be redirected to anyotherpage.
   const checkPassword = () => {
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirm_password");
@@ -209,6 +223,23 @@ function signup() {
             }}
           />
         </form>        
+      </Stack>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        OR
+      </Typography>
+      <Stack orientation="vertical">
+        {providers.map(({ name, Icon }) => (
+          <Button
+            variant="contained"
+            size="medium"
+            key={name}
+            startIcon={<Icon />}
+            sx={{ margin: "5px", width: "230px", textTransform: "uppercase" }}
+            onClick={handleOAuthSignIn(name)}
+          >
+            Sign in with {name}
+          </Button>
+        ))}
       </Stack>
     </Box>
   );
