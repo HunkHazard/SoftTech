@@ -66,10 +66,36 @@ const Signin = () => {
   }
   const handleOAuthSignIn = (provider) => () => signIn(provider); //will not be redirected to anyotherpage.
   //database query will be executed here in "handleSubmit" it will check the password and email from db and if they match the page will redirect to he index page.
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    router.push(`../../?session=true&email=${email}`);
+
+    try {
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert('Logged In')
+        // Redirect to the home page or any other page after successful sign-in
+        router.push(`/../../?session=true&email=${data.user.email}`);
+      } else {
+        alert('Incorrect Email or Password')
+        const errorData = await response.json();
+        console.error('Error signing in:', errorData.error);
+      }
+    } catch (error) {
+      alert('Error signing in:', error);
+    }
   };
+
   return (
     <Box
       sx={{
@@ -161,3 +187,4 @@ const Signin = () => {
 };
 
 export default Signin;
+

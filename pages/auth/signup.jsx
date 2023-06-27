@@ -13,9 +13,33 @@ function Signup() {
   const router = useRouter();
   //database queries to be entered here.
 
-  const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
-    router.push(`../../?session=true&email=${email}`);
+
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+          phone,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Signed Up')
+      } else {
+        const errorData = await response.json();
+        alert('Error signing up');
+      }
+    } catch (error) {
+      alert('Error signing up:', error);
+    }
   };
 
   const checkPassword = () => {
@@ -215,3 +239,4 @@ function Signup() {
 }
 
 export default Signup;
+
