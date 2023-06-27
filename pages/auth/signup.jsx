@@ -33,6 +33,7 @@ function Signup() {
 
       if (response.ok) {
         alert('Signed Up')
+        router.push('/auth/signin');
       } else {
         const errorData = await response.json();
         alert('Error signing up');
