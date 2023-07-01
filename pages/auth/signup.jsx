@@ -1,7 +1,21 @@
 import React from "react";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box ,Typography,Button} from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import GoogleIcon from "@mui/icons-material/Google";
+import {signIn} from "next-auth/react";
+const providers = [
+  {
+    name: "github",
+    Icon: GitHubIcon,
+  },
+  {
+    name: "google",
+    Icon: GoogleIcon,
+  },
+];
+
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -42,6 +56,7 @@ function Signup() {
       alert('Error signing up:', error);
     }
   };
+  const handleOAuthSignIn = (provider) => () => signIn(provider);
 
   const checkPassword = () => {
     const passwordInput = document.getElementById("password");
@@ -234,6 +249,23 @@ function Signup() {
             }}
           />
         </form>        
+      </Stack>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        OR
+      </Typography>
+      <Stack orientation="vertical">
+        {providers.map(({ name, Icon }) => (
+          <Button
+            variant="contained"
+            size="medium"
+            key={name}
+            startIcon={<Icon />}
+            sx={{ margin: "5px", width: "230px", textTransform: "uppercase" }}
+            onClick={handleOAuthSignIn(name)}
+          >
+            Sign in with {name}
+          </Button>
+        ))}
       </Stack>
     </Box>
   );
