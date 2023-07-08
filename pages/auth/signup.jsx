@@ -250,7 +250,7 @@ function Signup() {
           />
         </form>        
       </Stack>
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
+      {/* <Typography variant="body1" sx={{ textAlign: "center" }}>
         OR
       </Typography>
       <Stack orientation="vertical">
@@ -266,7 +266,7 @@ function Signup() {
             Sign in with {name}
           </Button>
         ))}
-      </Stack>
+      </Stack> */}
     </Box>
   );
 }
