@@ -8,45 +8,37 @@ import {
 } from "@mui/material";
 import styles from "../styles/Home.module.css";
 import Chart from "chart.js/auto";
-import React, { useRef, useEffect , useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
-const StationOne = {
-  x : [0, 1, 2, 3, 4],
-  y : [10, 15, 20, 25, 30],
-  airQuality : [10, 20, 40]
-};
-
-const StationTwo = {
-x : [0, 1, 2, 3, 4],
-y : [5, 10, 15, 20, 25],
-airQuality : [10, 30, 50]
-};
-
-const StationThree = {
-x : [0, 1, 2, 3, 4],
-y : [24,20,16,12,8],
-airQuality : [5, 25, 45]
-};
-
-const StationFour = {
-x : [0, 1, 2, 3, 4],
-y : [2, 4, 6, 8, 10],
-airQuality : [15, 35, 55]
-};
-
-const stations = [StationOne, StationTwo, StationThree, StationFour];
 
 export default function Graph() {
   const tempChartRef = useRef(null);
   const aqiChartRef = useRef(null);
 
   const selected = useSelector((state) => state.selectedStation.value);
-  const [StationData, setStationData] = useState(stations[selected]);
+  const [StationData, setStationData] = useState({
+    x: [],
+    y: [],
+    airQuality: [],
+  });
 
-  useEffect(()=>{
-    setStationData(stations[selected]);
-  },[selected])
+  async function getData() {
+    const response = await fetch("/api/chartData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ station: selected }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    setStationData(data);
+  }
+
+  useEffect(() => {
+    getData();
+  }, [selected]);
 
   useEffect(() => {
     const ctx = document.getElementById("barChart").getContext("2d");
@@ -129,7 +121,7 @@ export default function Graph() {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4, xs:2 },
+              mr: { md: 8, sm: 4, xs: 2 },
               borderRadius: "16px",
               p: 2,
             }}
@@ -162,7 +154,7 @@ export default function Graph() {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4, xs:2 },
+              mr: { md: 8, sm: 4, xs: 2 },
               borderRadius: "16px",
               p: 2,
             }}
@@ -205,7 +197,7 @@ export default function Graph() {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4, xs:2 },
+              mr: { md: 8, sm: 4, xs: 2 },
               borderRadius: "16px",
               p: 2,
             }}
@@ -246,7 +238,7 @@ export default function Graph() {
               display: "flex",
               flexDirection: "column",
               bgcolor: "#eeeeee",
-              mr: { md: 8, sm: 4, xs:2 },
+              mr: { md: 8, sm: 4, xs: 2 },
               borderRadius: "16px",
               p: 2,
             }}
