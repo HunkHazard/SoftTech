@@ -1,6 +1,6 @@
 import { Box, Button, Link, Stack, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { changeSelectedComponent } from "./store/slices/selectedComponentSlice";
+import { changeSelectedComponent } from "../store/slices/selectedComponentSlice";
 
 const components = ["Bulletin", "Chart", "Map", "Data", "Mobilize"];
 

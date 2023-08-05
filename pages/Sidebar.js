@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import NavigationIcon from "@mui/icons-material/Navigation";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeSelectedStation } from "./store/slices/selectedStationSlice";
+import { changeSelectedStation } from "../store/slices/selectedStationSlice";
 
 export default function SideBar() {
   const stations = ["Station 1", "Station 2", "Station 3", "Station 4"];
